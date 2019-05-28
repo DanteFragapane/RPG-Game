@@ -56,7 +56,6 @@ $("document").ready(() => {
 
 
     $(".character").click(function () {
-        console.log(this);
         activeCharacter = characters[$(this).attr("number")];
         console.log(activeCharacter);
     })
