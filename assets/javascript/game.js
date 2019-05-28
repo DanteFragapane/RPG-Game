@@ -91,8 +91,10 @@ $("document").ready(() => {
 
             $(".enemy").click(function () {
                 activeEnemy = characters[$(this).attr("number")];
-                let div = createDiv(activeEnemy, "attack", 1)
+                let div = createDiv(activeEnemy, "attack", 1); // Create the image div
+                let button = $("<button class='attackButton'>").text("Attack");
                 $("#attacking").empty().append(div);
+                $("#attacking").append(button);
             });
         }
     })
