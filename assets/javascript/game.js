@@ -37,10 +37,9 @@ $("document").ready(() => {
 
     characters.forEach(character => {
         div = $("<div class='character'>") // Create the div.character
-        div.append($("<img>").attr('src', `assets/images/${character.name}.jpg`))
-        div.append($("<text>", {text: character.fullname}));
-        
-        $("#characters").append(div);
+        div.append($("<img>").attr('src', `assets/images/${character.name}.jpg`))   // Create ``img`` as child of ``div``
+        div.append($("<text>", {text: character.fullname}));    // Create ``text`` as child of ``div``
+        $("#characters").append(div);   // Actually add the ``div`` element as a child of ``#characters``
     });
 
 
