@@ -1,17 +1,21 @@
 h1 {
+    padding: 2rem;
     font-size: 200%;
 }
 
 .character {
     border: blue solid 5px;
-    width: 100px;
+    width: 125px;
     float: left;
     margin: 10px;
+    /* For some reason center doesn't work under '.character text', so... I put it here! */
+    text-align: center;
 }
 
 .character img {
+    display: block;
     padding: 10px;
     height: 100px;
     width: 80px;
+    margin: 0px auto;
 }
-

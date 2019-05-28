@@ -2,8 +2,9 @@ $("document").ready(() => {
 
 
     // Character object constructor
-    function Character(name, health, attackPower, counterPower) {
+    function Character(name, fullname, health, attackPower, counterPower) {
         this.name = name;
+        this.fullname = fullname;
         this.health = health;
         this.attackPower = attackPower;
         this.increment = attackPower;
@@ -21,10 +22,10 @@ $("document").ready(() => {
     }
 
     // Creating the characters
-    const obi = new Character("obi", 100, 6, 4);
-    const luke = new Character("luke", 150, 8, 4);
-    const sidious = new Character("sidious", 100, 25);
-    const maul = new Character("maul", 125, 10);
+    const obi = new Character("obi", "Obi Wan Kanobi", 100, 6, 4);
+    const luke = new Character("luke", "Luke Skywalker", 150, 8, 4);
+    const sidious = new Character("sidious", "Darth Sidious", 100, 25);
+    const maul = new Character("maul", "Darth Maul", 125, 10);
 
     characters = [obi, luke, sidious, maul];
 
@@ -35,7 +36,10 @@ $("document").ready(() => {
 
 
     characters.forEach(character => {
-        div = $("<div class='character'>").append($("<img>").attr('src', `assets/images/${character.name}.jpg`)) // Create the div, append a <img> with attributes of 'src' being the headshot
+        div = $("<div class='character'>") // Create the div.character
+        div.append($("<img>").attr('src', `assets/images/${character.name}.jpg`))
+        div.append($("<text>", {text: character.fullname}));
+        
         $("#characters").append(div);
     });
 
