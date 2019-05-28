@@ -37,6 +37,19 @@ $("document").ready(() => {
     console.log(`${obi.health} ${obi.attackPower}`)
 
 
+    var reset = function () {
+        // FIXME: This oddly doesn't work? Please figure this out, developer!
+        // for (let i = 0; i < characters.length; i++) {
+        //     let character = characters[i];
+        //     div = $("<div class='character'>") // Create the div.character
+        //     div.attr("number", i);
+        //     div.append($("<img>").attr('src', `assets/images/${character.name}.jpg`)) // Create ``img`` as child of ``div``
+        //     div.append($("<text>", {
+        //         text: character.fullname
+        //     })); // Create ``text`` as child of ``div``
+        //     $("#characters").append(div); // Actually add the ``div`` element as a child of ``#characters``
+        // };
+    }
     for (let i = 0; i < characters.length; i++) {
         let character = characters[i];
         div = $("<div class='character'>") // Create the div.character
@@ -56,8 +69,15 @@ $("document").ready(() => {
 
 
     $(".character").click(function () {
+        console.log(event);
         activeCharacter = characters[$(this).attr("number")];
         console.log(activeCharacter);
+
+
     })
 
+
+
+
+    reset();
 })
