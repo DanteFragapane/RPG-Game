@@ -1,3 +1,15 @@
 h1 {
     font-size: 200%;
 }
+
+.character {
+    border: blue solid 5px;
+    width: 100px;
+    float: left;
+    margin: 10px;
+}
+
+.character img {
+    padding: 15px;
+}
+
