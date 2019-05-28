@@ -1,6 +1,7 @@
 $("document").ready(() => {
 
     var activeCharacter = Character;
+    var activeEnemy = Character;
 
 
     // Character object constructor
@@ -24,23 +25,8 @@ $("document").ready(() => {
     }
 
 
-    const createEnemies = function (characterList, active) {
-        for (let i = 0; i < characterList.length; i++) {
-            if (characterList[i].name != active.name) {
-                let character = characterList[i];
-                div = $("<div class='character'>") // Create the div.character
-                div.attr("number", i);
-                div.append($("<img>").attr('src', `assets/images/${character.name}.jpg`)) // Create ``img`` as child of ``div``
-                div.append($("<text>", {
-                    text: character.fullname
-                })); // Create ``text`` as child of ``div``
-                $("#enemies").append(div); // Actually add the ``div`` element as a child of ``#characters``
-            }
-        };
-    }
-
-    const createDiv = function(character, i) {
-        div = $("<div class='character'>") // Create the div.character
+    const createDiv = function (character, className, i) {
+        div = $(`<div class='${className}'>`) // Create the div.character
         div.attr("number", i);
         div.append($("<img>").attr('src', `assets/images/${character.name}.jpg`)) // Create ``img`` as child of ``div``
         div.append($("<text>", {
@@ -79,23 +65,36 @@ $("document").ready(() => {
 
     for (let i = 0; i < characters.length; i++) {
         let character = characters[i];
-        let div = createDiv(character, i);
+        let div = createDiv(character, "character", i);
         $("#characters").append(div); // Actually add the ``div`` element as a child of ``#characters``
     };
 
 
 
-
     // Clicking a character in the character section sets it as active
     $(".character").click(function () {
-        activeCharacter = characters[$(this).attr("number")];
-        // Hiding all but the active character
-        $(".character").each(function () { // jQuery's forEach
-            if (characters[$(this).attr("number")] != activeCharacter) { // If the name of the character is NOT the active character's name
-                $(this).css("display", "none");
-            }
-        });
-        createEnemies(characters, activeCharacter)
+        if (!characters.includes(activeCharacter)) {
+            activeCharacter = characters[$(this).attr("number")];
+            // Hiding all but the active character
+            $(".character").each(function () { // jQuery's forEach
+                if (characters[$(this).attr("number")] != activeCharacter) { // If the name of the character is NOT the active character's name
+                    $(this).css("display", "none");
+                }
+            });
+            for (let i = 0; i < characters.length; i++) {
+                if (characters[i].name != activeCharacter.name) {
+                    let character = characters[i];
+                    let div = createDiv(character, "enemy", i);
+                    $("#enemies").append(div); // Actually add the ``div`` element as a child of ``#characters``
+                }
+            };
+
+            $(".enemy").click(function () {
+                activeEnemy = characters[$(this).attr("number")];
+                let div = createDiv(activeEnemy, "attack", 1)
+                $("#attacking").empty().append(div);
+            });
+        }
     })
 
 
