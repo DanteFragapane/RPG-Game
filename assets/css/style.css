@@ -7,7 +7,7 @@ h1 {
     display: inline-block;
 }
 
-.character {
+.character, .enemy, .attack {
     border: blue solid 5px;
     width: 125px;
     float: left;
