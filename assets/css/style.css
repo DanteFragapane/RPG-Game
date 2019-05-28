@@ -3,6 +3,10 @@ h1 {
     font-size: 200%;
 }
 
+.characters {
+    display: inline-block;
+}
+
 .character {
     border: blue solid 5px;
     width: 125px;
@@ -12,7 +16,7 @@ h1 {
     text-align: center;
 }
 
-.character img {
+img {
     display: block;
     padding: 10px;
     height: 100px;
