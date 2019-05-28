@@ -3,11 +3,21 @@ h1 {
     font-size: 200%;
 }
 
+img {
+    display: block;
+    padding: 10px;
+    height: 100px;
+    width: 80px;
+    margin: 0px auto;
+}
+
 .characters {
     display: inline-block;
 }
 
-.character, .enemy, .attack {
+.character,
+.enemy,
+.attack {
     border: blue solid 5px;
     width: 125px;
     float: left;
@@ -16,10 +26,7 @@ h1 {
     text-align: center;
 }
 
-img {
+container {
     display: block;
-    padding: 10px;
-    height: 100px;
-    width: 80px;
-    margin: 0px auto;
+    overflow:auto;
 }

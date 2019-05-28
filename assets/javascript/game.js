@@ -14,7 +14,7 @@ $("document").ready(() => {
         this.counterPower = counterPower;
 
         this.attack = function (enemy) {
-            this.health -= enemy.attacked();
+            this.health -= enemy.attacked(enemy.attackPower);
             this.attackPower += this.increment;
         };
 
@@ -38,15 +38,10 @@ $("document").ready(() => {
     // Creating the characters
     const obi = new Character("obi", "Obi Wan Kanobi", 100, 6, 4);
     const luke = new Character("luke", "Luke Skywalker", 150, 8, 4);
-    const sidious = new Character("sidious", "Darth Sidious", 100, 25);
-    const maul = new Character("maul", "Darth Maul", 125, 10);
+    const sidious = new Character("sidious", "Darth Sidious", 100, 25, 25);
+    const maul = new Character("maul", "Darth Maul", 125, 10, 10);
 
     characters = [obi, luke, sidious, maul];
-
-    // Quick tests for checking attack
-    console.log(`${obi.health} ${obi.attackPower}`);
-    obi.attack(luke);
-    console.log(`${obi.health} ${obi.attackPower}`)
 
 
     var reset = function () {
@@ -55,7 +50,7 @@ $("document").ready(() => {
         //     let character = characters[i];
         //     div = $("<div class='character'>") // Create the div.character
         //     div.attr("number", i);
-        //     div.append($("<img>").attr('src', `assets/images/${character.name}.jpg`)) // Create ``img`` as child of ``div``
+        //     div.append($("<img>").attr('src', `assets/images/$,{character.name}.jpg`)) // Create ``img`` as child of ``div``
         //     div.append($("<text>", {
         //         text: character.fullname
         //     })); // Create ``text`` as child of ``div``
@@ -89,13 +84,22 @@ $("document").ready(() => {
                 }
             };
 
+            // Selecting enemy
             $(".enemy").click(function () {
                 activeEnemy = characters[$(this).attr("number")];
                 let div = createDiv(activeEnemy, "attack", 1); // Create the image div
-                let button = $("<button class='attackButton'>").text("Attack");
+                let button = $("<button id='attackButton'>").text("Attack");
                 $("#attacking").empty().append(div);
                 $("#attacking").append(button);
+
+                // Attacking functions
+                $("#attackButton").click(function () {
+                    console.log(activeCharacter.health)
+                    activeCharacter.attack(activeEnemy);
+                    console.log(activeCharacter.health)
+                })
             });
+
         }
     })
 
