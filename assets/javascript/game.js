@@ -38,6 +38,7 @@ $('document').ready(() => {
     return div
   }
 
+  // Updates the active character and enemy's health text
   const updateCharacterHealth = function (activeCharactersArray) {
     let character = activeCharactersArray[0]
     let enemy = activeCharactersArray[1]
