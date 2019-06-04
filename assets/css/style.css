@@ -30,3 +30,7 @@ container {
     display: block;
     overflow:auto;
 }
+
+.health, .name {
+    display: block;
+}
