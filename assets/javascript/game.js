@@ -25,6 +25,7 @@ $('document').ready(() => {
   const createDiv = function (character, className, i) {
     let div = $(`<div class='${className} characterObject'>`) // Create the div.character
     div.attr('number', i)
+    div.attr('name', character.name)
     div.append($('<img>').attr('src', `assets/images/${character.name}.jpg`)) // Create ``img`` as child of ``div``
     div.append($('<text>', {
       class: 'name',
@@ -37,14 +38,12 @@ $('document').ready(() => {
     return div
   }
 
-  const updateCharacterHealth = function (characters) {
-    let objectArray = $('#characterObject')
-    for (let i = 0; i < characters.length; i++) {
-      let character = characters[i]
-      // objectArray[i]
-      console.log(character[i])
-      console.log(objectArray[i])
-    }
+  const updateCharacterHealth = function (activeCharactersArray) {
+    let character = activeCharactersArray[0]
+    let enemy = activeCharactersArray[1]
+    console.log(character)
+    $('.character').find('.health').text(character.health)
+    $('.attack').find('.health').text(enemy.health)
   }
 
   // Creating the characters
@@ -82,7 +81,8 @@ $('document').ready(() => {
       // Hiding all but the active character
       $('.character').each(function () { // jQuery's forEach
         if (characters[$(this).attr('number')] !== activeCharacter) { // If the name of the character is NOT the active character's name
-          $(this).css('display', 'none')
+          $(this).html('')
+          $(this).removeClass()
         }
       })
       for (let i = 0; i < characters.length; i++) {
@@ -106,7 +106,7 @@ $('document').ready(() => {
           console.log(activeCharacter.health)
           activeCharacter.attack(activeEnemy)
           console.log(activeCharacter.health)
-          updateCharacterHealth(characters)
+          updateCharacterHealth([activeCharacter, activeEnemy])
         })
       })
     }
