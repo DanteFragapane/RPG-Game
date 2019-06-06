@@ -76,6 +76,7 @@ $('document').ready(() => {
   };
 
   // Clicking a character in the character section sets it as active
+  // TODO: Chain these together, don't nest the click functions inside each other!! Chain them like ``$('.character').click(() => {...}))`` I think? Or make them seperate
   $('.character').click(function () {
     if (!characters.includes(activeCharacter)) {
       activeCharacter = characters[$(this).attr('number')]
@@ -103,6 +104,7 @@ $('document').ready(() => {
         $('#attacking').append(button)
 
         // Attacking functions
+        // TODO: When attacking, check for health <= 0 for BOTH player and enemy. Such as ``if(activeCharacter.health <= 0)`` then use $(something).html to remove it
         $('#attackButton').click(function () {
           console.log(activeCharacter.health)
           activeCharacter.attack(activeEnemy)
